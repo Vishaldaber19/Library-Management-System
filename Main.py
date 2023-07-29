@@ -1,5 +1,5 @@
 # dependencies of project
-
+import os
 import datetime as time
 
 # Class Of Library Management System
@@ -26,7 +26,7 @@ class LibSys:
     # Displaying Books
 
     def Display_books(self):
-        print("-------------List of Books--------------")
+        print("\n-------------List of Books--------------\n")
         print("Books ID", "\t", "Title")
         print("-------------------------------")
         for key, value in self.books_dict.items():
@@ -92,25 +92,35 @@ try:
                       "A": "Add Books", "R": "Return Books", "Q": "Quit"}
     while True:
         print(
-            f"\n-----------------Welcome to {Myobject.library_name} Library Management System--------- \n")
+            f"\n--------------Welcome to {Myobject.library_name} Library Management System----------------- \n")
         for key, value in key_press_list.items():
             print(f"Press {key} To {value}")
-        pressed_key = input("Press key: ").lower()
+        try:
+            pressed_key = input("Press key: ").lower()
+        except: 
+            print("\nThank You for Using the App")
+            break
         if pressed_key == "i":
-            print("\nCurrent Selection : Issue Books")
+            os.system('clear')
+            print("\nCurrent Selection : Issue Books\n")
             Myobject.Issue_book()
         elif pressed_key == "r":
-            print("\nCurrent Selection : Return Books")
+            os.system('clear')
+            print("\nCurrent Selection : Return Books\n")
             Myobject.return_book()
         elif pressed_key == "d":
-            print("\nCurrent Selection : Display Books")
+            os.system('clear')
+            print("\nCurrent Selection : Display Books\n")
             Myobject.Display_books()
         elif pressed_key == "a":
-            print("\nCurrent Selection : Add Books")
+            os.system('clear')
+            print("\nCurrent Selection : Add Books\n")
             Myobject.Add_book()
         elif pressed_key == "q":
+            print("Thank You for Using the App")
             break
         else:
+            print("Please press a valid key")
             continue
 except Exception as error:
     print("Something went wrong. Please check your input!!"+error)
